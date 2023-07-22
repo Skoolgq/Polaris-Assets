@@ -1,7 +1,5 @@
 # Polaris-Assets
 
-assets
-
 
 ## Game setup
 
