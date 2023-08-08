@@ -1,5 +1,13 @@
 {"frames": {
 
+"discord_badge.png":
+{
+	"frame": {"x":764,"y":366,"w":172,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":172,"h":55},
+	"sourceSize": {"w":172,"h":55}
+},
 "elephant.png":
 {
 	"frame": {"x":506,"y":271,"w":11,"h":10},
