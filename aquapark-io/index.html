@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Aquapark.io</title>
+	<meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="height=device-width, initial-scale=1, maximum-scale=1, minimal-ui, user-scalable=0">
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="landscape"/>
+    <meta name="description" content="Aquapark.io is an arcade racing game that takes place on a giant water slide. Eliminate other players by knocking them off the edge and jump off to land further down!">
+    <meta name="keywords" content="aquapark,aquapark.io,play,online,game,browser,download">
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <link rel="shortcut icon" href="icon128.png">
+    <link rel="stylesheet" href="style3.css?v7"/>
+    <meta name="robots" content="noindex,nofollow" />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:700&amp;subset=cyrillic"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        body 
+        {
+            margin: 0;
+            padding: 0;
+            background-color: #333333;
+            touch-action: "none";
+        }
+    </style>
+</head>
+    <body onload="if (PROJECT) PROJECT.MAIN=new PROJECT.MAIN();">
+        <script src="WebGL.js?v20220930" type="text/javascript"></script>
+        <script src="three.min.js?v20220930" type="text/javascript"></script>
+        <script src="three-text2d.js?v20220930" type="text/javascript"></script>
+        <script src="OBJLoader.js?v20220930" type="text/javascript"></script>
+        <script src="MTLLoader.js?v20220930" type="text/javascript"></script>
+        <script src="FBXLoader.js?v20220930" type="text/javascript"></script>
+        <script src="inflate.min.js?v20220930" type="text/javascript"></script>
+        <script src="settings.js?v20220930" type="text/javascript"></script>
+        <script src="data/gui/gui.js?v20220930" type="text/javascript"></script>
+        <script src="app.js?v20220930" type="text/javascript"></script>
+        <script src="main.js?v20220930" type="text/javascript"></script>
+        <script src="preloader.js?v20220930" type="text/javascript"></script>
+        <script src="info.js?v20220930a" type="text/javascript"></script>
+        <script src="gm_main.js?v20220930" type="text/javascript"></script>
+
+   <div id="preroll"></div>
+
+   <script>
+	console.log('V20220930-2');
+        window["GD_OPTIONS"] = 
+        {
+            "gameId": "ce67b95f0db44d66b8b0dc48ade7ce1a",
+            "prefix": "aqua_park_gd", 
+            "advertisementSettings": 
+            {
+                "debug": false, // Enable IMA SDK debugging.
+                "autoplay": false, // Don't use this because of browser video autoplay restrictions.
+                "locale": "en", // Locale used in IMA SDK, this will localize the "Skip ad after x seconds" phrases.
+            },        
+            "onEvent": function(event) {
+                switch (event.name) {
+                    case "AD_ERROR":
+                    if (PROJECT.STR.on_continue)
+                        {
+                            PROJECT.STR.on_continue();
+                            PROJECT.STR.on_continue=null;
+                        }
+                        break;
+                    case "SDK_READY":
+			ShowDisplayAd();
+                        break;
+                    case "SDK_ERROR":
+                        break;
+                    case "SDK_GAME_START":
+                        // advertisement done, resume game logic and unmute audio
+                        if (PROJECT.STR.on_continue)
+                        {
+                            PROJECT.STR.on_continue();
+                            PROJECT.STR.on_continue=null;
+                        }
+                        break;
+                    case "SDK_GAME_PAUSE":
+                        // pause game logic / mute audio
+                        break;
+                    case "SDK_GDPR_TRACKING":
+                        // this event is triggered when your user doesn't want to be tracked
+                        break;
+                    case "SDK_GDPR_TARGETING":
+                        // this event is triggered when your user doesn't want personalised targeting of ads and such
+                        break;
+                }
+        },
+    };
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = '/main.min.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'gamedistribution-jssdk'));
+    </script>
+
+        <div id="game"></div>
+        <div id="about">
+      <h1>Aquapark.io</h1>
+  	<p>In Aquapark.io you compete with other players in a race that takes place on a gigantic water park  
+slide. It goes on and on, seemingly spiraling into infinity, but there is an end and the first person to  
+reach the finish line wins. It is not easy to stay on track and there’s always a danger of getting  
+thrown off the slide by someone else, but once you get the hang of the gameplay you will be able to  
+push the others off and take shortcuts by jumping off on your own and landing somewhere on a  
+lower level.</p>
+        <h2>How to play Aquapark.io</h2>
+        <p>
+        Control your character by holding the mouse button and steering in the appropriate direction. Steer  
+harder to jump off and keep moving to stick the perfect landing. 
+Can you master the game and become the best racer on the world’s greatest water slide? Give  
+Aquapark.io a try and find out! 
+        </p>
+            <p>
+                <a href="#aboutclose" onclick="HideAbout();">
+                    Close window
+                </a>
+            </p>
+        </div>
+	<div id="gdads"></div>
+
+        <script type="text/javascript">
+            function ShowAbout() 
+            {
+                var ab = document.getElementById('about');
+                if (ab.style.display === 'block') 
+                {
+                    HideAbout();
+                } else 
+                {
+                    ab.style.display = 'block';
+                }
+            }
+            function HideAbout() 
+            {
+                var ab = document.getElementById('about');
+                ab.style.display = 'none';
+            }
+
+            function ShowAds() 
+            {
+		var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		ShowDisplayAd();
+        //         if( screen.height >= 800 ) 
+        //         {
+	    //             var bottom = document.getElementById('bottom');
+	    //             bottom.style.display = 'block';
+		// }
+            }
+            function HideAds() 
+            {
+                HideAbout();
+        //         var ads = document.getElementById('gdads');
+		// if( ads != null ) ads.className = 'hide';
+		// ads = document.getElementById('ads');
+		// if( ads != null ) ads.className = 'hide';
+        //         var bottom = document.getElementById('bottom');
+        //         bottom.style.display = 'none';
+            }
+            HideAds();
+
+	    var LastAdsRefresh = 0;
+	    function ShowDisplayAd()
+    	    {
+        //         var ads = document.getElementById('gdads');
+        //         if( ads != null ) ads.className = 'show';		
+        //         ads = document.getElementById('ads');
+        //         if( ads != null ) ads.className = 'show';		
+		// var CurDate = (new Date()).getTime();
+		// if( CurDate - LastAdsRefresh < 10*1000 ) {
+		// 	return;
+		// }
+		// LastAdsRefresh = CurDate;
+		// window.gdsdk.showAd(window.gdsdk.AdType.Display, { containerId: "gdads"}).then(() => console.info('showAd(window.gdsdk.AdType.Display) resolved.')).catch(error => console.info(error));
+	    }
+
+
+function ShowPreroll(here)
+    {
+        if (typeof gdsdk !== 'undefined' && gdsdk.showAd !== 'undefined') 
+  {
+   gdsdk.showAd().catch(error => {
+    // Any Rewarded ad is not available to user.
+    if (here.on_continue)
+    {
+     here.on_continue();
+     here.on_continue=null;
+    }
+    });
+  }else
+  {
+   here.on_continue();
+   here.on_continue=null;
+        }
+    }
+    document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    var keyCode = evt.keyCode;
+    if (keyCode >= 37 && keyCode <= 40) {
+        return false;
+    }
+};
+  </script>
+    </body>
+</html>
