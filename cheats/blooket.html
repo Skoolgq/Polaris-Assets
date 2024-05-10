@@ -23,9 +23,12 @@
         </a>
       </button>
       <script>
-        fetch("gui.min.js", {
-          method: "GET",
-        })
+        fetch(
+          "https://raw.githubusercontent.com/Skoolgq/Polaris-Assets/main/cheats/gui.min.js",
+          {
+            method: "GET",
+          }
+        )
           .then((data) => data.text())
           .then((data) => {
             let cheats = encodeURIComponent(data.split("*/ ")[1]);
